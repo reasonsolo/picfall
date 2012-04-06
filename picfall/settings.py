@@ -51,7 +51,6 @@ USE_TZ = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join (os.path.abspath(os.path.dirname(__file__)), 'media')
-IMAGE_DIR =  os.path.join (MEDIA_ROOT, 'images')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -131,7 +130,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     # self-defined apps
+    'picfall.auth',
     'picfall.fall',
+    'picfall.interact',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -162,3 +163,9 @@ LOGGING = {
         },
     }
 }
+
+# customed settings
+IMAGE_DIR =  os.path.join (MEDIA_ROOT, 'images')
+AUTH_PROFILE_MODULE = 'auth.UserProfile'
+
+
