@@ -1,34 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}{% endblock %} Pic Fall</title>
+        <title>{% block title %}{% endblock %} PicFall</title>
         <!-- Le styles -->
         <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
         <link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+        }
+        .sidebar-nav {
+          padding: 9px 0;
+        }
+        </style>
+
         {% block media %}
         {% endblock %}
         <!-- <link href="assets/css/docs.css" rel="stylesheet">
         <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"> -->
 
     </head>
-    <body>
+    <body class="p180">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
-                <div class="container">
+                <div class="container-fluid">
+                    <a class="brand"><img src="{{STATIC_URL}}img/webx.png" style="height: 12px" /></a>
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
                     <ul class="nav">
-                        <li><a>pass</a></li>
+                        <li><a href="#">Home</a></li>
                         {% block "nav" %}
                         {% endblock %}
                     </ul>
-                    <a class="brand"><img src="{{STATIC_URL}}img/webx.png" style="height:30px; overflow:visible" /></a>
+                    <!--/.nav-collapse -->
                 </div>
             </div>
         </div>
+        <div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <hr />
+            <footer>
+                {% block footer %}
+                {% endblock %}
+            </footer>
+        </div>
+        </div>
+        <script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
+        <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+        <script src="{{STATIC_URL}}js/base.js"></script>
+        <script>
+            prepare_ajax();
+        </script>
     </body>
 </html>
 
