@@ -75,7 +75,7 @@ STATICFILES_DIRS = (
 	#('sounds', os.path.join (os.path.dirname(__file__), 'static/sounds')),
 	('js', os.path.join (os.path.dirname(__file__), 'static/js')),
 	('css', os.path.join (os.path.dirname(__file__), 'static/css')),
-	('images', os.path.join (os.path.dirname(__file__), 'static/images')),
+	('img', os.path.join (os.path.dirname(__file__), 'static/img')),
 	#('admin', os.path.join (os.path.dirname(__file__), 'static/admin')),
 )
 
@@ -116,6 +116,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+	os.path.join (os.path.dirname (__file__), 'templates'),
 )
 
 INSTALLED_APPS = (

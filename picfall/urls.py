@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'picfall.views.home', name='home'),
+     url(r'^$', 'picfall.fall.views.home', name='home'),
     # url(r'^picfall/', include('picfall.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
