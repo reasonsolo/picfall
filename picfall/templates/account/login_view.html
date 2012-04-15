@@ -1,0 +1,40 @@
+{% extends "account/base.html" %}
+{% load url from future %}
+
+{% load i18n %}
+{% block title %}{% trans "Log in" %} | {% endblock %}
+
+{% block content %}
+<div class="hero-unit" id="login">
+<form method="post" action="" class="form-horizontal well">
+    <fieldset>
+    {% csrf_token %}
+
+    {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+    {% endfor %}
+    {% if wrong_pswd %}
+    <div class="alert alert-error">
+        <a class="close" data-dismiss="alert">&times;</a>
+        {% trans "incorrect username/password combination" %}
+    </div>
+
+    {% endif %}
+    {% for field in form.visible_fields %}
+    <div class="control-group {% if field.errors %}error{% endif %}">
+        <span class="control-label">{{ field.label }}</span> 
+        <div class="controls">
+            {{ field }} 
+        </div>
+        <span class="help-inline">{{ field.errors }}</span>
+    </div>
+    {% endfor %}
+    <div class="controls">
+        <input type="submit" class="btn btn-primary" value="{% trans "Log in" %}" />
+        <a class="btn">{% trans "Register" %}</a>
+    </div>
+    </fieldset>
+</form>
+</div>
+{% endblock %}
+

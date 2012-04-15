@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block bottommedia %}
+{{ block.super }}
+<script>
+    PICTURE_API = "{% url api_dispatch_list resource_name="picture" %}"
+    PROFILE_API = "{% url api_dispatch_list resource_name="profile" %}"
+    USER_API = "{% url api_dispatch_list resource_name="user" %}"
+</script>
+<script src="{{STATIC_URL}}js/fall/pic.js"></script>
+{% endblock %}

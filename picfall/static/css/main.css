@@ -1,0 +1,8 @@
+body {
+    padding-top: 60px;
+}
+
+.image img {
+    display: block;
+    width: 100%;
+}

@@ -50,7 +50,8 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join (os.path.abspath(os.path.dirname(__file__)), 'media')
+MEDIA_NAME = 'media'
+MEDIA_ROOT = os.path.join (os.path.abspath(os.path.dirname(__file__)), MEDIA_NAME)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -99,8 +100,9 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
@@ -131,9 +133,11 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     # self-defined apps
-    'picfall.auth',
+    'picfall.account',
     'picfall.fall',
     'picfall.interact',
+    # external apps
+    'tastypie',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -166,7 +170,16 @@ LOGGING = {
 }
 
 # customed settings
-IMAGE_DIR =  os.path.join (MEDIA_ROOT, 'images')
-AUTH_PROFILE_MODULE = 'auth.UserProfile'
+IMAGE_DIR =  'images'
+THUMBNAIL_DIR = 'thumbnails'
+# IMAGE_SIZE = 1920, 1080
+THUMBNAIL_SIZE = 480, 720
+LOGIN_REDIRECT_URL = '/'
 
+AUTH_PROFILE_MODULE = 'picfall.account.UserProfile'
 
+# the number of images rendered in the template (first page)
+INIT_IMAGE_NUM = 20
+
+# the number of images loaded dynamicly by ajax
+ADDING_IMAGE_NUM = 10

@@ -1,0 +1,31 @@
+{% extends "fall/base.html" %}
+
+{% load i18n %}
+
+{% block nav %}
+<li class="dropdown" id="cat-menu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu">
+        {% trans "Category" %}
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="">{% trans "all" %}</a></li>
+        <li class="divider"></li>
+        {% for cat in cats %}
+        <li><a href="">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div id="pictures">
+</div>
+<div id="endofpage"></div>
+{% endblock %}
+
+{% block bottommedia %}
+{{block.super}}
+<script src="{{STATIC_URL}}js/fall/home.js"></script>
+{% endblock %}
